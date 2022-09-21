@@ -24,7 +24,7 @@ export const TodoForm = () => {
      return (
         <form>
             <TextField variant="outlined" label="A faire" onChange={handleChange}/>
-            <Button variant="outlined" onClick={addTodo}>Enregistrer</Button>
+            <Button variant="outlined" onClick={addTodo}>Ajouter</Button>
         </form>
     )
 };
