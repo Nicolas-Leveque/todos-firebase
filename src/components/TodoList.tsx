@@ -10,6 +10,7 @@ export const TodoList = () => {
     const db = getDatabase(firebaseApp);
 
     const [ todoList, setTodoList ] = useState<Todo[]>([]);
+    const [ doneList, setDoneList ] = useState<Todo[]>([]);
 
     useEffect(() => {
         const todoRef = ref(db, "/todos");
@@ -17,10 +18,16 @@ export const TodoList = () => {
         onValue(todoRef, (snapshot) => {
             const todos = snapshot.val();
             const newTodoList: Todo[] = [];
+            const newDoneList: Todo[] =[];
             for  ( let id in todos ) {
-                newTodoList.push({ id, ...todos[id] });
+                if ( todos[id].done === false) {
+                    newTodoList.push({id, ...todos[id]});
+                } else {
+                    newDoneList.push({ id, ...todos[id]});
+                }
             };
             setTodoList(newTodoList);
+            setDoneList(newDoneList);
         });
     }, [db]);
     const handleToogle = (todo: Todo) => {
@@ -33,9 +40,22 @@ export const TodoList = () => {
     };
     return (
         <div className="list">
-            <h3>Liste</h3>
+            <h3>A faire</h3>
             <Divider />
             {todoList && todoList.map((todo, index) => {
+                return (
+                    <div className="todo" key={index}>
+                        <div className="todo-left">
+                            <Checkbox checked={todo.done} onChange={() => handleToogle(todo)}/>
+                            <p >{todo.title}</p>
+                        </div>
+                        <Button variant="outlined" color="error" onClick={() => handleDelete(todo)} >Effacer</Button>
+                    </div>
+                )
+            })}
+            <h3>Terminé</h3>
+            <Divider />
+            {doneList && doneList.map((todo, index) => {
                 return (
                     <div className="todo" key={index}>
                         <div className="todo-left">
