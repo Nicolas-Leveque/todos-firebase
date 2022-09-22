@@ -1,18 +1,20 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-//import { getDatabase } from "firebase/database";
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyB2JdjpJqnb2RG4eqQwdzZ7rvE5r-mpCRs",
-    authDomain: "fire-testing-e125f.firebaseapp.com",
-    projectId: "fire-testing-e125f",
-    storageBucket: "fire-testing-e125f.appspot.com",
-    messagingSenderId: "9726868316",
-    appId: "1:9726868316:web:91ec78db8f16cab79e9f99",
-    databaseURL: "https://fire-testing-e125f-default-rtdb.europe-west1.firebasedatabase.app"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    databaseURL: process.env.REACT_APP_DATABASE_URL
 };
 
 // Initialize Firebase
