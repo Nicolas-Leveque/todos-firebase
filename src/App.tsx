@@ -8,8 +8,10 @@ function App() {
   return (
     <div className="App">
         <Header />
-        <TodoForm />
-        <TodoList />
+        <div className="app_main">
+            <TodoForm />
+            <TodoList />
+        </div>
     </div>
   );
 }

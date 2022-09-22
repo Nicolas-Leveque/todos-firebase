@@ -10,6 +10,11 @@ header {
   background-color: #5C6BC0;
   color: white;
 }
+
+.app_main {
+    margin: 2% 0;
+}
+
 Form {
   display: flex;
   flex-direction: row;
@@ -36,4 +41,10 @@ Form {
   flex-direction: column;
   text-align: left;
   margin: 5%;
+}
+
+@media all and ( min-width: 1024px) {
+  .app_main {
+    margin: 2% 30%;
+  }
 }
