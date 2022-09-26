@@ -19,12 +19,14 @@ export const TodoForm = () => {
             title,
             done: false
         };
+        setTitle("");
         push(todoRef, todo);
+
     };
      return (
         <form>
-            <TextField variant="outlined" label="A faire" onChange={handleChange}/>
-            <Button variant="outlined" onClick={addTodo}>Ajouter</Button>
+            <TextField variant="outlined" label="A faire" onChange={handleChange} value={title}/>
+            <Button variant="outlined" onClick={addTodo} type="submit">Ajouter</Button>
         </form>
     )
 };
